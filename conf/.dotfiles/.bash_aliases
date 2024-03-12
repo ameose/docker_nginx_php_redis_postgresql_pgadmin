@@ -1,0 +1,1 @@
+[ -f ~/.dotfiles/aliases/.terminal.sh ] && . ~/.dotfiles/aliases/.terminal.sh

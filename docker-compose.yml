@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+# nginx
+  nginx:
+    container_name: nginx
+    hostname: nginx
+    working_dir: /var/www/sites/
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network
+    volumes:
+      - ./nginx_conf:/etc/nginx/conf.d:rw
+      - ./sites:/var/www/sites
+
+# Networks
+networks:
+  app-network:
+    driver: bridge
