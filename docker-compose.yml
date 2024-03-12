@@ -16,7 +16,19 @@ services:
     volumes:
       - ./nginx_conf:/etc/nginx/conf.d:rw
       - ./sites:/var/www/sites
-
+# php
+  php:
+    container_name: php
+    hostname: php-fpm
+    build:
+      context: .
+      dockerfile: php-fpm/Dockerfile
+    networks:
+      - app-network
+    restart: unless-stopped
+    volumes:
+      - ./sites:/var/www/sites
+    working_dir: /var/www/sites/
 # Networks
 networks:
   app-network:
