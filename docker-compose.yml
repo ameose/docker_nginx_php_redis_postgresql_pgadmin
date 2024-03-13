@@ -46,7 +46,24 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./postgres/backup:/opt/backups
-
+# pgadmin
+  pgadmin:
+      container_name: pgadmin
+      hostname: pgadmin
+      build:
+        context: ./pgadmin
+        dockerfile: Dockerfile
+      depends_on:
+        - postgres
+      env_file:
+        - ./pgadmin/.env
+      networks:
+        - app-network
+      ports:        
+        - "8081:80"
+      restart: always
+      volumes:
+        - pgadmin_data:/var/lib/pgadmin
 # Networks
 networks:
   app-network:
