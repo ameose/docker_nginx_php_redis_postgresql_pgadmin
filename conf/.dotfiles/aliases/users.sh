@@ -1,0 +1,1 @@
+alias luid='echo "Список пользователей (сортировка по id):";getent passwd | awk -F: '"'"'{print $3." -",$1}'"'"' | sort -n'

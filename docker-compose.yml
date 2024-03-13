@@ -29,7 +29,33 @@ services:
     volumes:
       - ./sites:/var/www/sites
     working_dir: /var/www/sites/
+# postgresql
+  postgres:
+    container_name: pg
+    hostname: postgres
+    build:
+      context: .
+      dockerfile: postgres/Dockerfile
+    env_file:
+      - ./postgres/postgres.env
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/backup:/opt/backups
+
 # Networks
 networks:
   app-network:
     driver: bridge
+volumes:
+  postgres_data:
+  pgadmin_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./pgadmin/dat

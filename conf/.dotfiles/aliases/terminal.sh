@@ -1,7 +1,9 @@
 # Работа в терминале
 
   alias la="ls -a1"
-  alias h="cd ~"
+  alias lah='ls -lah'
+  alias h='cd ~'
+  alias home='cd ~/'
 
 # Очистить терминал
 
