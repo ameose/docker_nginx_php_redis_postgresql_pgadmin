@@ -75,4 +75,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ./pgadmin/dat
+      device: ./pgadmin/data
